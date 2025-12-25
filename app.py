@@ -21,11 +21,17 @@ if st.sidebar.button("🔄 Rebuild Index"):
 def load_rag_store():
     return VectorStore.load_index()
 
-store = load_rag_store()
-if not store:
-    st.error("❌ No index found! Click 'Rebuild Index' in sidebar.")
-    st.stop()
-st.rerun()
+# Replace caching with simple reload
+def get_store():
+    store = VectorStore.load_index()
+    if not store:
+        st.warning("No index. Auto-rebuilding...")
+        build_full_index()
+        store = VectorStore.load_index()
+    return store
+
+store = get_store()
+
 # Chat interface
 st.title("📚 RAG PDF Chatbot")
 st.markdown("**Ask questions about your DSA PDF** (104 chunks indexed)")
