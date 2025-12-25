@@ -25,7 +25,7 @@ store = load_rag_store()
 if not store:
     st.error("❌ No index found! Click 'Rebuild Index' in sidebar.")
     st.stop()
-
+st.rerun()
 # Chat interface
 st.title("📚 RAG PDF Chatbot")
 st.markdown("**Ask questions about your DSA PDF** (104 chunks indexed)")
