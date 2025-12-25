@@ -1,4 +1,4 @@
-torch>=2.0.0
+torch==2.1.0+cpu --index-url https://download.pytorch.org/whl/cpu
 sentence-transformers>=2.2.0
 faiss-cpu>=1.7.4
 pypdf>=3.17.0
